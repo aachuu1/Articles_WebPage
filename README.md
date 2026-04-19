@@ -22,3 +22,5 @@ Daca nu foloseam ASP.NET Core Identity, ar fi trebuit sa implementam manual tot 
 6. Dezavantajele folosirii ASP.NET Core Identity
 
 Desi Identity este foarte util si rapid de folosit, are si dezavantaje. Este destul de complex si creeaza o schema de baza de date complicata, cu multe tabele generate automat. De asemenea, este mai greu de personalizat daca vrei un sistem foarte diferit de cel standard. Migrarea catre un alt sistem de autentificare poate fi dificila din cauza dependentei de structura sa interna. In plus, pentru aplicatii moderne de tip API sau mobile, uneori nu este cea mai flexibila solutie, deoarece alte solutii precum JWT sunt mai usor de integrat cu frontend-uri separate.
+
+Demo yt: https://youtu.be/poOQyWz_tSE
