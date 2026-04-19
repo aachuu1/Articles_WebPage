@@ -1,5 +1,5 @@
 ﻿# Articles_WebPage
-1. De ce Logout este <form method="post"> si nu un link <a href>?
+1. De ce Logout este <form method="post"> si nu un link <a href> ?
 
 Logout este implementat ca POST deoarece modifica starea aplicatiei, adica utilizatorul este delogat. Actiunile care modifica date nu ar trebui facute prin GET, ci prin POST. Daca logout ar fi un link de tip GET, acesta ar putea fi accesat accidental prin refresh sau prefetch, dar si exploatat prin atacuri de tip CSRF, unde un alt site ar putea forta delogarea utilizatorului fara ca acesta sa isi doreasca. Din acest motiv, folosim un formular POST care este mai sigur.
 
