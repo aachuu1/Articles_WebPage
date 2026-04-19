@@ -1,13 +1,13 @@
 ﻿# Articles_WebPage
-1. De ce Logout este "<form method="post">" si nu un link "<a href>" ?
+1.De ce Logout este implementat ca \<form method="post"> și nu ca un link \<a href="/Auth/Logout">?
 
 Logout este implementat ca POST deoarece modifica starea aplicatiei, adica utilizatorul este delogat. Actiunile care modifica date nu ar trebui facute prin GET, ci prin POST. Daca logout ar fi un link de tip GET, acesta ar putea fi accesat accidental prin refresh sau prefetch, dar si exploatat prin atacuri de tip CSRF, unde un alt site ar putea forta delogarea utilizatorului fara ca acesta sa isi doreasca. Din acest motiv, folosim un formular POST care este mai sigur.
 
-2. De ce login-ul face doi pasi in loc de unul?
+2. De ce login-ul face doi pași în loc de unul?
 
 Login-ul face doi pasi deoarece in Identity, email-ul nu este acelasi lucru cu UserName-ul. Mai intai se cauta utilizatorul dupa email cu FindByEmailAsync, iar apoi se foloseste UserName pentru autentificare in PasswordSignInAsync. Nu exista o metoda directa care sa primeasca email si parola pentru ca sistemul de autentificare este construit in jurul UserName-ului, iar email-ul este doar o informatie suplimentara. De aceea este nevoie de acesti doi pasi.
 
-3. De ce nu este suficient sa ascundem butoanele din View?
+3. De ce nu este suficient să ascunzi butoanele Edit/Delete în View?
 
 Chiar daca ascundem butoanele Edit si Delete in View folosind conditii de tipul User.Identity.IsAuthenticated, acest lucru nu este suficient pentru securitate. Un utilizator poate accesa direct URL-ul actiunii din controller si poate incerca sa modifice datele fara sa foloseasca interfata. De aceea, este necesar sa protejam si in backend cu [Authorize] si verificari de tipul IsOwnerOrAdmin(). Daca folosim doar [Authorize] fara sa ascundem butoanele in View, utilizatorul va vedea optiunile dar va primi eroare cand incearca sa le foloseasca, ceea ce este sigur, dar nu ofera o experienta buna.
 
